@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="goodsMapper">
+
+	<insert id="insert" parameterType="cn.hxy.mybatis.po.Goods"
+		useGeneratedKeys="true">
+		insert into android(number, name , price , press ,
+		date , author,location,time)
+		values(#{number} , #{name} , #{price} ,
+		#{press} , #{date} , #{author} , #{location} , #{time})
+	</insert>
+
+	<select id="selectAll" resultType="cn.hxy.mybatis.po.Goods">
+		select * from android
+	</select>
+	<select id="findGoodsByNumber" parameterType="String"
+		resultType="cn.hxy.mybatis.po.Goods">
+		SELECT * FROM android WHERE number=#{id}
+	</select>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cn.hxy.mybatis.po.Goods">
+		delete from android where
+		number=#{id}
+	</delete>
+	<!-- 修改用户 -->
+	<update id="update" parameterType="cn.hxy.mybatis.po.Goods">
+		update android set
+		name=#{name},price=#{price},press=#{press},date=#{date},author=#{author},location=#{location},time=#{time}
+		where number=#{number}
+	</update>
+
+</mapper>
